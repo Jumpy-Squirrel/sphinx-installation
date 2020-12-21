@@ -1,5 +1,6 @@
 ---
-- hosts: sphinx
+- name: Install packages
+  hosts: sphinx
   tasks:
   - name: install tcsh
     apt: name=tcsh
@@ -11,4 +12,22 @@
     apt: name=unzip
   - name: install net-tools (netstat etc.)
     apt: name=net-tools
+
+- name: Perform system update and enable unattended updates
+  hosts: sphinx
+  tags:
+    - system_upgrade
+  tasks:
+    - name: apt upgrade
+      apt:
+        update_cache: yes
+        upgrade: full
+        cache_valid_time: 3600
+    - name: enable unattended security updates
+      template:
+        src: apt-unattended-updates.j2
+        dest: /etc/apt/apt.conf.d/10periodic
+        owner: root
+        group: root
+        mode: '0644'
 
