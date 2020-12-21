@@ -16,10 +16,11 @@ USE AT YOUR OWN RISK.
 Install ubuntu server from the ISO image. We have no need for
 disk encryption, so all should be easy. No Swap.
 
-### Install git and clone this repository
+### Clone this repository
+
+As root:
 
 ```
-apt-get install git
 git clone https://github.com/Jumpy-Squirrel/sphinx-installation
 ```
 
@@ -41,5 +42,7 @@ localhost ansible_connection=local
 You can run any of the provided ansible playbooks using
 
 ```
-ansible-playbook x.yml
+cd sphinx-installation
+ansible-playbook 10-packages.yml
+ansible-playbook 20-firewall.yml
 ```

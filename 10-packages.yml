@@ -9,3 +9,6 @@
     apt: name=zip
   - name: install unzip
     apt: name=unzip
+  - name: install net-tools (netstat etc.)
+    apt: name=net-tools
+
