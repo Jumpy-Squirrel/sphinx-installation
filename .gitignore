@@ -1,0 +1,13 @@
+# ansible
+**/*.retry
+
+# editors
+**/*.swp
+
+# intelliJ idea
+.idea/**
+**/*.iml
+**/*.ipr
+**/*.iws
+
+todo.txt

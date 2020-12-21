@@ -1,0 +1,11 @@
+---
+- hosts: sphinx
+  tasks:
+  - name: install tcsh
+    apt: name=tcsh
+  - name: install ssh and sshd
+    apt: name=ssh
+  - name: install zip
+    apt: name=zip
+  - name: install unzip
+    apt: name=unzip
