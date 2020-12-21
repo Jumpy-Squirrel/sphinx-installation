@@ -16,6 +16,13 @@ USE AT YOUR OWN RISK.
 Install ubuntu server from the ISO image. We have no need for
 disk encryption, so all should be easy. No Swap.
 
+### Install git and clone this repository
+
+```
+apt-get install git
+git clone https://github.com/Jumpy-Squirrel/sphinx-installation
+```
+
 ### Install ansible
 
 ```
