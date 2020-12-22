@@ -49,4 +49,6 @@ You can run any of the provided ansible playbooks using
 cd sphinx-installation
 ansible-playbook 10-packages.yml
 ansible-playbook 20-network-firewall.yml
+ansible-playbook 30-swap-mounts.yml
+ansible-playbook 40-users-ssh.yml --ask-vault-pass
 ```
