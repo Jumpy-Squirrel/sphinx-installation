@@ -1,0 +1,49 @@
+---
+- name: create users and groups
+  hosts: sphinx
+  tasks:
+    - name: create group
+      group:
+        gid: "{{ item.id }}"
+        name: "{{ item.name }}"
+      with_items:
+        - name: tabalon
+          id: 501
+        - name: jumpy
+          id: 502
+        - name: music
+          id: 503
+        - name: media
+          id: 504
+        - name: backup
+          id: 505
+        - name: public
+          id: 506
+        - name: avatar
+          id: 507
+        - name: scanner
+          id: 508
+    - name: create user
+      user:
+        create_home: no
+        group: "{{ item.name }}"
+        name: "{{ item.name }}"
+        shell: /usr/bin/false
+        uid: "{{ item.id }}"
+      with_items:
+        - name: tabalon
+          id: 501
+        - name: jumpy
+          id: 502
+        - name: music
+          id: 503
+        - name: media
+          id: 504
+        - name: backup
+          id: 505
+        - name: public
+          id: 506
+        - name: avatar
+          id: 507
+        - name: scanner
+          id: 508

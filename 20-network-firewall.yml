@@ -12,6 +12,12 @@
 - name: disable ipv6 completely
   hosts: sphinx
   tasks:
+    - name: configure ipv6 disable in grub
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+        line: 'GRUB_CMDLINE_LINUX_DEFAULT="ipv6.disable=1"'
+      notify: update grub
     - name: Load cmdline content
       slurp:
         src: "/proc/cmdline"
@@ -25,3 +31,5 @@
   handlers:
     - name: run sysctl
       command: sysctl --load=/etc/sysctl.d/10-disable-ipv6.conf
+    - name: update grub
+      command: update-grub
