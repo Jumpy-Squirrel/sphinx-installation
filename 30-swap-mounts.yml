@@ -32,7 +32,7 @@
     - name: mount home_crypted
       mount:
         fstype: nfs
-        opts: rw,nosuid,hard,intr,bg,nodevs
+        opts: rw,nosuid,hard,intr,bg
         dump: 0
         passno: 0
         state: mounted
