@@ -1,0 +1,40 @@
+---
+- name: disable swap permanently
+  hosts: sphinx
+  tasks:
+    - name: disable swap
+      command: /usr/sbin/swapoff -a
+
+    - name: remove swap entry from fstab
+      mount:
+        path: none
+        src: /swap.img
+        fstype: swap
+        opts: sw
+        state: absent
+
+    - name: Ensure swap file doesn't exist
+      file:
+        path: /swap.img
+        state: absent
+
+- name: mount crypted NFS shares
+  hosts: sphinx
+  tasks:
+    - name: create mount point
+      file:
+        path: /mnt/home_crypted
+        state: directory
+        owner: root
+        group: root
+        permissions: '0755'
+
+    - name: mount home_crypted
+      mount:
+        fstype: nfs
+        opts: rw,nosuid,hard,intr,bg,nodevs
+        dump: 0
+        passno: 0
+        state: mounted
+        src: 192.168.0.31:/volume1/home_crypted
+        path: /mnt/home_crypted

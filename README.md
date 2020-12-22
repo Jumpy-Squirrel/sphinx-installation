@@ -14,7 +14,11 @@ USE AT YOUR OWN RISK.
 ### Install OS
 
 Install ubuntu server from the ISO image. We have no need for
-disk encryption, so all should be easy. No Swap.
+disk encryption, so all should be easy.
+
+Note that even if you do net set up a swap partition, the
+installer will create a swap file and add an fstab entry.
+The ansible playbooks will remove it again...
 
 ### Clone this repository
 
@@ -44,5 +48,5 @@ You can run any of the provided ansible playbooks using
 ```
 cd sphinx-installation
 ansible-playbook 10-packages.yml
-ansible-playbook 20-firewall.yml
+ansible-playbook 20-network-firewall.yml
 ```
