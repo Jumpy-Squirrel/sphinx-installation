@@ -51,4 +51,5 @@ ansible-playbook 10-packages.yml
 ansible-playbook 20-network-firewall.yml
 ansible-playbook 30-swap-mounts.yml
 ansible-playbook 40-users-ssh.yml --ask-vault-pass
+ansible-playbook 50-encfs-scripts.yml --ask-vault-pass
 ```

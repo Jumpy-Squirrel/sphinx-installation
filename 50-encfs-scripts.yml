@@ -33,3 +33,11 @@
         group: root
         owner: root
         mode: '0700'
+
+    - name: create unlock script
+      template:
+        src: templates/encfs-unlock.sh.j2
+        dest: /root/scripts/unlock.sh
+        group: root
+        owner: root
+        mode: '0700'
