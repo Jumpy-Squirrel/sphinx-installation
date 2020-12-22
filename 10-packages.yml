@@ -12,6 +12,10 @@
       apt: name=unzip
     - name: install net-tools (netstat etc.)
       apt: name=net-tools
+    - name: install nfs client
+      apt: name=nfs-common
+    - name: install encfs
+      apt: name=encfs
 
 - name: Perform system update and enable unattended updates
   hosts: sphinx
