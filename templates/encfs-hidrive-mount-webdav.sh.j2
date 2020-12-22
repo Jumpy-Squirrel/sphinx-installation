@@ -1,0 +1,4 @@
+#! /bin/bash
+
+mount -t davfs -o ro,username={{ hidrive.user }} \
+                {{ hidrive.baseurl }} /mnt/home_hidrive_crypted/

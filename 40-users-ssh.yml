@@ -50,7 +50,7 @@
     - name: set up authorized keys for root
       copy:
         dest: /root/.ssh/authorized_keys
-        src: authorized_keys.vault
+        src: files/authorized_keys.vault
         mode: '0600'
         owner: root
         group: root

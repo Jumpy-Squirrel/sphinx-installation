@@ -1,0 +1,35 @@
+---
+- name: prepare encfs and scripts
+  hosts: sphinx
+  tasks:
+    - name: create fuse mount point
+      file:
+        path: /mnt/home_decrypted
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: create hidrive mount point
+      file:
+        path: /mnt/home_hidrive_crypted
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: create scripts dir
+      file:
+        path: /root/scripts
+        state: directory
+        owner: root
+        group: root
+        mode: '0700'
+
+    - name: create hidrive mount script
+      template:
+        src: templates/encfs-hidrive-mount-webdav.sh.j2
+        dest: /root/scripts/hidrive-mount-webdav.sh
+        group: root
+        owner: root
+        mode: '0700'

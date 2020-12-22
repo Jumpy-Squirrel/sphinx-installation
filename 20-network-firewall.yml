@@ -24,7 +24,7 @@
       register: cmdline_data
     - name: Disable IPv6
       template:
-        src: disable-ipv6.conf.j2
+        src: templates/disable-ipv6.conf.j2
         dest: /etc/sysctl.d/10-disable-ipv6.conf
       notify: run sysctl
       when: 'not "ipv6.disable=1" in cmdline_data.content|b64decode'

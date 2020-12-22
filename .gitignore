@@ -11,3 +11,4 @@
 **/*.iws
 
 todo.txt
+host_vars/sphinx.yml
