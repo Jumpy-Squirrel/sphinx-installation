@@ -30,3 +30,10 @@
         group: root
         owner: root
         mode: '0644'
+    - name: configure Samba lmhosts file
+      template:
+        src: templates/lmhosts.j2
+        dest: /etc/samba/lmhosts
+        group: root
+        owner: root
+        mode: '0644'
