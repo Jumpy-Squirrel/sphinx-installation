@@ -23,3 +23,10 @@
         group: root
         owner: root
         mode: '0644'
+    - name: configure Samba user map
+      template:
+        src: templates/smbusers.j2
+        dest: /etc/samba/smbusers
+        group: root
+        owner: root
+        mode: '0644'
