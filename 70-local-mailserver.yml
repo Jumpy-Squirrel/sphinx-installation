@@ -1,0 +1,28 @@
+---
+- name: install a local-only mail server for cron / smb error mails
+  hosts: sphinx
+  tasks:
+    - name: install mutt mail reader
+      apt:
+        name: mutt
+    - name: install postfix
+      apt:
+        name: postfix
+    - name: install libsasl2-modules
+      apt:
+        name: libsasl2-modules
+    - name: install mail command line
+      apt:
+        name: bsd-mailx
+
+    - name: Set Postfix option hostname
+      debconf: name=postifx question="postfix/mailname" value="{{ansible_fqdn}}" vtype="string"
+
+    - name: Set Postfix option type as local only site
+      debconf: name=postfix question="postfix/main_mailer_type" value="'Local only'" vtype="string"
+
+    - name: Install Postfix
+      apt: package={{ item }} state=present force=yes update_cache=yes cache_valid_time=3600
+      with_items:
+        - postfix
+        - mailutils
