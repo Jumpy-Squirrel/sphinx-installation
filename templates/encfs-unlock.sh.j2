@@ -13,7 +13,7 @@ set -e
 
 echo "obtaining key from phrase.gpg"
 
-KEY="$( gpg -d -o - /root/scripts/phrase.gpg )"
+KEY="$( gpg --textmode --pinentry-mode loopback -d -o - /root/scripts/phrase.gpg )"
 
 # ---
 
@@ -27,4 +27,4 @@ echo "$KEY" | encfs --stdinpass /mnt/home_crypted/panther /mnt/home_decrypted
 
 echo "starting SMB services..."
 
-echo "TODO"
+systemctl start smbd.service
