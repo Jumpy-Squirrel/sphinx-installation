@@ -21,7 +21,7 @@ echo "unlocking /mnt/home_decrypted..."
 
 export ENCFS5_CONFIG=/mnt/home_crypted/encfs5
 
-echo "$KEY" | encfs --stdinpass /mnt/home_crypted/panther /mnt/home_decrypted
+echo "$KEY" | encfs --stdinpass -o allow_other /mnt/home_crypted/panther /mnt/home_decrypted
 
 # ---
 
@@ -29,7 +29,7 @@ echo "unlocking /mnt/data_decrypted..."
 
 export ENCFS5_CONFIG=/mnt/data_crypted/encfs5
 
-echo "$KEY" | encfs --stdinpass /mnt/data_crypted/panther /mnt/data_decrypted
+echo "$KEY" | encfs --stdinpass -o allow_other /mnt/data_crypted/panther /mnt/data_decrypted
 
 # ---
 
