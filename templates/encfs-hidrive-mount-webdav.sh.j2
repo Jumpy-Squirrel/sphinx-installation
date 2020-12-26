@@ -1,4 +1,17 @@
 #! /bin/bash
+# [managed by 50-encfs-scripts.yml]
+
+#
+# perform a read-only mount using the webdav protocol
+#
+# Use this method to manually access the files on the hidrive. You will need to type in the password.
+# A full restore should be done using rsync instead.
+#
+# Limitations:
+# - webdav shows the wrong total size of the backup
+# - symlinks aren't visible (though they are on the hidrive)
+# - unmount does not work if connection has timed out - you may need to reboot
+#
 
 mount -t davfs -o ro,username={{ hidrive.user }} \
                 {{ hidrive.baseurl }} /mnt/home_hidrive_crypted/

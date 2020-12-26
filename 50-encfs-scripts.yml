@@ -26,6 +26,14 @@
         group: root
         mode: '0700'
 
+    - name: write phrase.gpg
+      copy:
+        dest: /root/scripts/phrase.gpg
+        src: files/phrase.gpg.vault
+        mode: '0600'
+        owner: root
+        group: root
+
     - name: create hidrive mount script
       template:
         src: templates/encfs-hidrive-mount-webdav.sh.j2
