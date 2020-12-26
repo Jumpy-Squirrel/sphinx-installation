@@ -13,11 +13,11 @@ set -e
 
 echo "obtaining key from phrase.gpg"
 
-KEY="$( gpg -d -o - phrase.gpg )"
+KEY="$( gpg -d -o - /root/scripts/phrase.gpg )"
 
 # ---
 
-echo "unlocking /mnt/home_decrypted"
+echo "unlocking /mnt/home_decrypted..."
 
 export ENCFS5_CONFIG=/mnt/home_crypted/encfs5
 
@@ -25,4 +25,6 @@ echo "$KEY" | encfs --stdinpass /mnt/home_crypted/panther /mnt/home_decrypted
 
 # ---
 
-echo "now "
+echo "starting SMB services..."
+
+echo "TODO"
