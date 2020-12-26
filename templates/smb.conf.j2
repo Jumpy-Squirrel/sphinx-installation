@@ -1,0 +1,112 @@
+[global]
+   workgroup = SQUIRRELS
+   server string = %h
+
+   ## Logging ##
+
+   log level = 2
+   log file = /var/log/samba/log.%m
+   max log size = 1000
+   logging = file
+   panic action = /usr/share/samba/panic-action %d
+
+   ## Authentication ##
+
+   server role = standalone server
+   unix password sync = no
+   obey pam restrictions = no
+   pam password change = no
+
+   security = user
+   username map = /etc/samba/smbusers
+   passdb backend = tdbsam:/etc/samba/passdb.tdb
+
+   map to guest = Bad User
+   usershare allow guests = no
+   # disable user defined shares entirely
+   usershare max shares = 0
+
+   ## Misc ##
+
+   show add printer wizard = No
+   wins support = No
+   time server = Yes
+   domain logons = No
+   utmp = No
+
+[tabalon]
+comment = Home Directory of Tabalon
+path = /mnt/home_decrypted/tabalon
+read only = No
+valid users = tabalon
+force user = tabalon
+force group = tabalon
+guest ok = No
+browseable = Yes
+
+[jumpy]
+comment = Home Directory of Jumpy
+path = /mnt/home_decrypted/jumpy
+read only = No
+valid users = jumpy
+force user = jumpy
+force group = jumpy
+guest ok = No
+browseable = No
+
+[avatar]
+comment = avatar ftp
+path = /mnt/home_decrypted/avatar
+read only = Yes
+valid users = jumpy tabalon
+force user = avatar
+force group = avatar
+guest ok = No
+browseable = No
+
+[music]
+comment = Music Share
+path = /mnt/home_decrypted/music
+read only = No
+guest ok = Yes
+browseable = Yes
+force user = music
+force group = music
+
+[media]
+comment = Media Share
+path = /mnt/data_decrypted/media
+read only = No
+guest ok = Yes
+browseable = Yes
+force user = media
+force group = media
+
+[public]
+comment = Public Share
+path = /mnt/data_decrypted/public
+read only = No
+guest ok = Yes
+browseable = Yes
+force user = public
+force group = public
+
+[haus]
+comment = Home Directory of Tabalon
+path = /mnt/home_decrypted/tabalon/private/projects/Hausbau
+read only = No
+valid users = tabalon jumpy
+force user = tabalon
+force group = tabalon
+guest ok = No
+browseable = Yes
+
+[hp_scanner]
+comment = Document destination for HP Color LaserJet Pro MFP M281fdw scanner
+path = /mnt/data_decrypted/scans
+read only = No
+valid users = scanner tabalon jumpy
+force user = scanner
+force group = scanner
+guest ok = No
+browsable = Yes

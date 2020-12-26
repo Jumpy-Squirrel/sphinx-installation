@@ -25,6 +25,15 @@ echo "$KEY" | encfs --stdinpass /mnt/home_crypted/panther /mnt/home_decrypted
 
 # ---
 
+echo "unlocking /mnt/data_decrypted..."
+
+export ENCFS5_CONFIG=/mnt/data_crypted/encfs5
+
+echo "$KEY" | encfs --stdinpass /mnt/data_crypted/panther /mnt/data_decrypted
+
+# ---
+
 echo "starting SMB services..."
 
+systemctl start nmbd.service
 systemctl start smbd.service

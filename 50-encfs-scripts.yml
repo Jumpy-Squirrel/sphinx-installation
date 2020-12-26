@@ -2,13 +2,16 @@
 - name: prepare encfs and scripts
   hosts: sphinx
   tasks:
-    - name: create fuse mount point
+    - name: create fuse mount points
       file:
-        path: /mnt/home_decrypted
+        path: '/mnt/{{ item }}'
         state: directory
         owner: root
         group: root
         mode: '0755'
+      with_items:
+        - home_decrypted
+        - data_decrypted
 
     - name: create hidrive mount point
       file:

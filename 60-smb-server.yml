@@ -16,9 +16,10 @@
         enabled: no
     - name: allow Samba traffic in firewall
       ufw: rule=allow name=Samba
-
-# /etc/samba/smb.conf
-# ports: 139 (tcp)
-#        445 (tcp)
-# nmbd: 137, 138 (udp)
-
+    - name: configure Samba
+      template:
+        src: templates/smb.conf.j2
+        dest: /etc/samba/smb.conf
+        group: root
+        owner: root
+        mode: '0644'

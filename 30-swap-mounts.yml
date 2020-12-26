@@ -21,20 +21,28 @@
 - name: mount crypted NFS shares
   hosts: sphinx
   tasks:
-    - name: create mount point
+    - name: create mount points
       file:
-        path: /mnt/home_crypted
+        path: '/mnt/{{ item }}'
         state: directory
         owner: root
         group: root
         mode: '0755'
+      with_items:
+        - home_crypted
+        - data_crypted
 
-    - name: mount home_crypted
+    - name: mount crypted shares
       mount:
         fstype: nfs
         opts: rw,nosuid,hard,intr,bg
         dump: 0
         passno: 0
         state: mounted
-        src: 192.168.0.31:/volume1/home_crypted
-        path: /mnt/home_crypted
+        src: '192.168.0.31:/{{ item.volume }}/{{ item.path }}'
+        path: '/mnt/{{ item.path }}'
+      with_items:
+        - path: home_crypted
+          volume: volume1
+        - path: data_crypted
+          volume: volume3

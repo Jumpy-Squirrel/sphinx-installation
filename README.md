@@ -53,4 +53,7 @@ ansible-playbook 20-network-firewall.yml
 ansible-playbook 30-swap-mounts.yml
 ansible-playbook 40-users-ssh.yml --ask-vault-pass
 ansible-playbook 50-encfs-scripts.yml --ask-vault-pass
+ansible-playbook 60-smb-server.yml
 ```
+
+Finally, run `smbpasswd` for each samba user. 
