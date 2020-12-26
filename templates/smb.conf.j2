@@ -45,7 +45,7 @@ valid users = tabalon
 force user = tabalon
 force group = tabalon
 guest ok = No
-browseable = Yes
+browseable = No
 
 [jumpy]
 comment = Home Directory of Jumpy
@@ -71,8 +71,9 @@ browseable = No
 comment = Music Share
 path = /mnt/home_decrypted/music
 read only = No
-guest ok = Yes
-browseable = Yes
+guest ok = No
+browseable = No
+valid users = tabalon jumpy
 force user = music
 force group = music
 
@@ -80,17 +81,19 @@ force group = music
 comment = Media Share
 path = /mnt/data_decrypted/media
 read only = No
-guest ok = Yes
-browseable = Yes
+guest ok = No
+browseable = No
+valid users = tabalon jumpy
 force user = media
-force group = media
+force group = No
 
 [public]
 comment = Public Share
 path = /mnt/data_decrypted/public
 read only = No
-guest ok = Yes
-browseable = Yes
+guest ok = No
+browseable = No
+valid users = tabalon jumpy
 force user = public
 force group = public
 
@@ -102,7 +105,7 @@ valid users = tabalon jumpy
 force user = tabalon
 force group = tabalon
 guest ok = No
-browseable = Yes
+browseable = No
 
 [hp_scanner]
 comment = Document destination for HP Color LaserJet Pro MFP M281fdw scanner
