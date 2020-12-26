@@ -26,6 +26,9 @@
    # disable user defined shares entirely
    usershare max shares = 0
 
+   idmap config * : backend = tdb
+   idmap config * : range = 1000000-1999999
+
    ## Misc ##
 
    show add printer wizard = No
