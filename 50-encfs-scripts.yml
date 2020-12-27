@@ -37,7 +37,7 @@
         owner: root
         group: root
 
-    - name: create hidrive mount script
+    - name: create hidrive mount script (manual mount)
       template:
         src: templates/encfs-hidrive-mount-webdav.sh.j2
         dest: /root/scripts/hidrive-mount-webdav.sh
@@ -49,6 +49,22 @@
       template:
         src: templates/encfs-unlock.sh.j2
         dest: /root/scripts/unlock.sh
+        group: root
+        owner: root
+        mode: '0700'
+
+    - name: write hidrive_ssh_key
+      copy:
+        dest: /root/scripts/hidrive_ssh_key
+        src: files/hidrive_ssh_key.vault
+        mode: '0600'
+        owner: root
+        group: root
+
+    - name: create hidrive backup script (for cronjob)
+      template:
+        src: templates/encfs-backup-to-hidrive.sh.j2
+        dest: /root/scripts/backup-to-hidrive.sh
         group: root
         owner: root
         mode: '0700'

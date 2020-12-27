@@ -1,0 +1,16 @@
+#! /bin/bash
+# [managed by 50-encfs-scripts.yml]
+
+#
+# back up home_encrypted to hidrive using rsync
+#
+# intended for use as a cron job
+#
+
+# rsync without owners and groups
+rsync -rlptDS \
+        --progress \
+        --delete \
+        -e 'ssh -i /root/scripts/hidrive_ssh_key' \
+        /mnt/home_crypted/panther/ \
+        backup-4135@rsync.hidrive.strato.com:/users/backup-4135/panther/
