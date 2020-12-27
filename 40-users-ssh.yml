@@ -33,8 +33,6 @@
       with_items:
         - name: tabalon
           id: 501
-        - name: jumpy
-          id: 502
         - name: music
           id: 503
         - name: media
@@ -47,6 +45,16 @@
           id: 507
         - name: scanner
           id: 508
+    - name: create user
+      user:
+        create_home: yes
+        group: "{{ item.name }}"
+        name: "{{ item.name }}"
+        shell: /bin/bash
+        uid: "{{ item.id }}"
+      with_items:
+        - name: jumpy
+          id: 502
     - name: set up authorized keys for root
       copy:
         dest: /root/.ssh/authorized_keys
