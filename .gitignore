@@ -11,6 +11,5 @@
 **/*.iws
 
 todo.txt
-host_vars/localhost.yml
 files/phrase.gpg.vault
 files/hidrive_ssh_key.vault
