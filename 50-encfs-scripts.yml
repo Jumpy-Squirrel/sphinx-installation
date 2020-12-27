@@ -68,3 +68,19 @@
         group: root
         owner: root
         mode: '0700'
+
+    - name: configure ssh algorithms
+      copy:
+        dest: /root/.ssh/config
+        src: files/ssh_config
+        mode: '0600'
+        owner: root
+        group: root
+
+    - name: set up cron job for nightly backup
+      cron:
+        name: backup home_crypted to hidrive
+        minute: "40"
+        hour: "3"
+        user: root
+        job: "/root/scripts/backup-to-hidrive.sh"
