@@ -17,19 +17,25 @@ KEY="$( gpg --textmode --pinentry-mode loopback -d -o - /root/scripts/phrase.gpg
 
 # ---
 
-echo "unlocking /mnt/home_decrypted..."
+if [ ! -d /mnt/home_decrypted/music ]; then
+  echo "unlocking /mnt/home_decrypted..."
 
-export ENCFS5_CONFIG=/mnt/home_crypted/encfs5
-
-echo "$KEY" | encfs --stdinpass --public /mnt/home_crypted/panther /mnt/home_decrypted
+  export ENCFS5_CONFIG=/mnt/home_crypted/encfs5
+  echo "$KEY" | encfs --stdinpass --public /mnt/home_crypted/panther /mnt/home_decrypted
+else
+  echo "/mnt/home_decrypted already unlocked - skipped"
+fi
 
 # ---
 
-echo "unlocking /mnt/data_decrypted..."
+if [ ! -d /mnt/data_decrypted/public ]; then
+  echo "unlocking /mnt/data_decrypted..."
 
-export ENCFS5_CONFIG=/mnt/data_crypted/encfs5
-
-echo "$KEY" | encfs --stdinpass --public /mnt/data_crypted/panther /mnt/data_decrypted
+  export ENCFS5_CONFIG=/mnt/data_crypted/encfs5
+  echo "$KEY" | encfs --stdinpass --public /mnt/data_crypted/panther /mnt/data_decrypted
+else
+  echo "/mnt/data_decrypted already unlocked - skipped"
+fi
 
 # ---
 

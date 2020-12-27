@@ -7,6 +7,12 @@
 # intended for use as a cron job
 #
 
+# ensure crypted homes are mounted to avoid blanking the backup if not available
+if [ ! -d "/mnt/home_crypted/panther" ]; then
+    echo "/mnt/home_crypted does not appear to be mounted from NAS - aborting"
+    exit 1
+fi
+
 # rsync without owners and groups
 rsync -rlptDS \
         --progress \
