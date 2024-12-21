@@ -1,0 +1,13 @@
+---
+- name: configure openssl to allow legacy ciphers so encfs works with our tree
+  # see https://github.com/vgough/encfs/issues/656 for explanation
+  hosts: sphinx
+  tasks:
+    - name: overwrite openssl.cnf with legacy cipher support config
+      copy:
+        dest: /etc/ssl/openssl.cnf
+        src: files/openssl.cnf
+        mode: '0644'
+        owner: root
+        group: root
+        backup: true
